@@ -3,6 +3,20 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+// Sistema global para coordenar o fim do loading com animações
+let loadingCompleteCallbacks: (() => void)[] = [];
+let isLoadingComplete = false;
+
+export const onLoadingComplete = (callback: () => void) => {
+  if (isLoadingComplete) {
+    callback();
+  } else {
+    loadingCompleteCallbacks.push(callback);
+  }
+};
+
+export const isLoadingFinished = () => isLoadingComplete;
+
 /*
   Splash screen de carregamento inicial.
   - Fundo #011147 (usar utilitária inline mantida via CSS var futura se necessário)
@@ -18,7 +32,13 @@ export default function LoadingSplash() {
 
   useEffect(() => {
     setMounted(true);
-    const timeout = setTimeout(() => setHidden(true), 1900); // tempo curto para não atrasar TTI
+    const timeout = setTimeout(() => {
+      setHidden(true);
+      // Notificar que o loading terminou
+      isLoadingComplete = true;
+      loadingCompleteCallbacks.forEach(callback => callback());
+      loadingCompleteCallbacks = [];
+    }, 1900); // tempo curto para não atrasar TTI
     return () => clearTimeout(timeout);
   }, []);
 
@@ -32,10 +52,10 @@ export default function LoadingSplash() {
         {mounted ? (
           <motion.div
             animate={{
-              scale: [1, 3.2, 1],
+              scale: [1, 1.2, 1],
             }}
             transition={{
-              duration: 1.5,
+              duration: 1.7,
               repeat: Infinity,
               ease: "easeInOut"
             }}
@@ -46,8 +66,8 @@ export default function LoadingSplash() {
             <Image
               src="/images/vetor-conecta.png"
               alt=""
-              width={220}
-              height={220}
+              width={300}
+              height={300}
               priority
               className="select-none will-change-transform"
             />
@@ -56,8 +76,8 @@ export default function LoadingSplash() {
           <Image
             src="/images/vetor-conecta.png"
             alt=""
-            width={220}
-            height={220}
+            width={300}
+            height={300}
             priority
             className="select-none will-change-transform"
           />

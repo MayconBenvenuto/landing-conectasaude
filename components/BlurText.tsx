@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { onLoadingComplete, isLoadingFinished } from "./ui/loading-splash";
 
 type AnimateBy = "words" | "letters";
 type Direction = "top" | "bottom" | "left" | "right" | "none";
@@ -42,6 +43,7 @@ export default function BlurText({
   className = "",
   as = "div",
 }: BlurTextProps) {
+  const [canAnimate, setCanAnimate] = useState(false);
   const reduced = useMemo(() => (typeof window !== 'undefined' ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false), []);
   const items = useMemo(() => {
     if (animateBy === 'letters') {
@@ -67,12 +69,23 @@ export default function BlurText({
   const [done, setDone] = useState(false);
   const timeoutRef = useRef<number | null>(null);
 
+  // Aguardar o loading terminar antes de iniciar animação
+  useEffect(() => {
+    if (isLoadingFinished()) {
+      setCanAnimate(true);
+    } else {
+      onLoadingComplete(() => setCanAnimate(true));
+    }
+  }, []);
+
   useEffect(() => {
     if (reduced) {
       setDone(true);
       onAnimationComplete?.();
       return;
     }
+    if (!canAnimate) return;
+    
     const total = delay + durationPerItem + stagger * (items.length - 1);
     timeoutRef.current = window.setTimeout(() => {
       setDone(true);
@@ -81,7 +94,7 @@ export default function BlurText({
     return () => {
       if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
     };
-  }, [delay, durationPerItem, stagger, items.length, reduced, onAnimationComplete]);
+  }, [delay, durationPerItem, stagger, items.length, reduced, onAnimationComplete, canAnimate]);
 
   return (
     <Wrapper
@@ -92,8 +105,8 @@ export default function BlurText({
     >
       {items.map((segment, index) => {
         if (segment === '__BR__') return <br key={`br-${index}`} />;
-        const style: React.CSSProperties = reduced ? {
-          opacity: 1,
+        const style: React.CSSProperties = reduced || !canAnimate ? {
+          opacity: canAnimate ? 1 : 0,
           filter: 'blur(0)',
           transform: 'none'
         } : {

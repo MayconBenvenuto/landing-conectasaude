@@ -7,6 +7,7 @@ import {
   type Target,
   type TargetAndTransition
 } from 'framer-motion';
+import { onLoadingComplete, isLoadingFinished } from "./ui/loading-splash";
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(' ');
@@ -172,11 +173,22 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
       [next, previous, jumpTo, reset]
     );
 
+    const [canAnimate, setCanAnimate] = useState(false);
+
+    // Aguardar o loading terminar antes de iniciar rotação
     useEffect(() => {
-      if (!auto) return;
+      if (isLoadingFinished()) {
+        setCanAnimate(true);
+      } else {
+        onLoadingComplete(() => setCanAnimate(true));
+      }
+    }, []);
+
+    useEffect(() => {
+      if (!auto || !canAnimate) return;
       const intervalId = setInterval(next, rotationInterval);
       return () => clearInterval(intervalId);
-    }, [next, rotationInterval, auto]);
+    }, [next, rotationInterval, auto, canAnimate]);
 
     return (
       <motion.span
@@ -192,6 +204,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
             className={cn(splitBy === 'lines' ? 'flex flex-col w-full' : 'flex flex-wrap whitespace-pre-wrap relative')}
             layout
             aria-hidden="true"
+            style={{ opacity: canAnimate ? 1 : 0 }}
           >
             {elements.map((wordObj, wordIndex, array) => {
               const previousCharsCount = array
