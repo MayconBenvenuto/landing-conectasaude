@@ -20,6 +20,7 @@ export default function LeadFormSection() {
 	});
 	const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 	const [errors, setErrors] = useState<string[]>([]);
+	const [serverErrorCode, setServerErrorCode] = useState<string | null>(null);
 	const [honeypot, setHoneypot] = useState("");
 
 	function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -36,6 +37,7 @@ export default function LeadFormSection() {
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault();
 		setErrors([]);
+		setServerErrorCode(null);
 		if (!validate()) {
 			setStatus("error");
 			return;
@@ -47,14 +49,17 @@ export default function LeadFormSection() {
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ ...form, honeypot })
 			});
-			const data = await res.json();
+			let data: any = {};
+			try { data = await res.json(); } catch {}
 			if (!res.ok) {
-				setErrors(data.errors || ['erro']);
+				setErrors(data.errors || []);
+				setServerErrorCode(data.error || 'erro');
 				setStatus('error');
 				return;
 			}
 			setStatus('success');
 		} catch (err) {
+			setServerErrorCode('network');
 			setStatus('error');
 		}
 	}
@@ -221,7 +226,14 @@ export default function LeadFormSection() {
 							)}
 							{status === "error" && (
 								<div className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 border border-red-200 space-y-1">
-									<p>Verifique os campos obrigatórios e o formato do e-mail.</p>
+									<p>
+										{serverErrorCode === 'config_invalida' && 'Falha de configuração do servidor. Tente novamente mais tarde.'}
+										{serverErrorCode === 'smtp_conexao_falhou' && 'Não foi possível conectar ao servidor de e-mail.'}
+										{serverErrorCode === 'envio_email_falhou' && 'Erro ao enviar o e-mail. Tente novamente.'}
+										{serverErrorCode === 'erro_interno' && 'Erro interno do servidor.'}
+										{serverErrorCode === 'network' && 'Falha de rede. Verifique sua conexão.'}
+										{!serverErrorCode && 'Verifique os campos obrigatórios e o formato do e-mail.'}
+									</p>
 									{errors.length > 0 && (
 										<ul className="list-disc pl-4">
 											{errors.map(er => <li key={er}>{er}</li>)}
