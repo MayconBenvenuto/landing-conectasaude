@@ -54,6 +54,7 @@ Objetivo: Landing modular focada em conversão (lead) com forte ênfase em acess
 * Rodar local: `pnpm dev` (Turbopack ativo).
 * Build: `pnpm build`; depois `pnpm start`.
 * Ajustes de estilo: centralizar em `style.css`; criar utilitária ao invés de espalhar classes ad‑hoc com hex.
+* **Dependências limpas**: Removido `three.js`, `postprocessing` e `Hyperspeed.tsx` (não utilizados).
 
 ### Ao Adicionar Nova Seção
 1. Criar arquivo no padrão `components/<nome>-section.tsx`.
