@@ -18,7 +18,6 @@ export default function HeroSection() {
 	// Inicia sem autoplay e com áudio ativo quando o usuário clicar
 	const [muted, setMuted] = useState(false);
 	const videoRef = useRef<HTMLVideoElement | null>(null);
-	const [showTranscript, setShowTranscript] = useState(false);
 
 	const handlePlay = useCallback(() => {
 		setPlaying(true);
@@ -133,10 +132,9 @@ export default function HeroSection() {
 									<button
 										type="button"
 										onClick={handlePlay}
-										className="absolute inset-0 z-20 flex h-full w-full flex-col items-center justify-center gap-4 bg-brand-dark/60 p-6 text-center text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+										className="absolute inset-0 z-20 flex h-full w-full flex-col items-center justify-center gap-4 bg-brand-dark/80 p-6 text-center text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
 										aria-label="Reproduzir vídeo de apresentação"
 									>
-										<div className="absolute inset-0 -z-10"><Image src="/images-conecta/image-hero.png" alt="Thumbnail vídeo Belz Conecta Saúde" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADmQGmLbrJ7QAAAABJRU5ErkJggg==" /></div>
 										<span className="inline-flex items-center gap-3 rounded-full bg-white/10 px-6 py-3 text-sm font-medium backdrop-blur-md ring-1 ring-white/20">
 											<svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 8.40192C17.8333 9.17172 17.8333 11.0762 16.5 11.846L3 19.6371C1.66667 20.4069 0 19.4431 0 17.9264V2.32151C0 0.804805 1.66667 -0.158945 3 0.610855L16.5 8.40192Z" fill="currentColor" /></svg>
 											Assistir apresentação
@@ -147,14 +145,12 @@ export default function HeroSection() {
 								<video
 									ref={videoRef}
 									className="aspect-video h-full w-full object-cover"
-									poster="/images-conecta/image-hero.png"
 									loop
 									playsInline
 									preload="none"
 									muted={muted}
-									aria-label="Vídeo de apresentação Belz Conecta Saúde com legendas"
+									aria-label="Vídeo de apresentação Belz Conecta Saúde"
 								>
-									<track kind="captions" src="/video/apresentacao-belzseguros.vtt" srcLang="pt-BR" label="Português" default />
 									Seu navegador não suporta a reprodução de vídeo.
 								</video>
 								{playing && (
@@ -184,22 +180,6 @@ export default function HeroSection() {
 									</div>
 								)}
 								</div>
-								<div className="mt-3 flex flex-wrap gap-3">
-									<button
-										onClick={() => setShowTranscript(s => !s)}
-										type="button"
-										className="text-xs font-medium text-brand-primary underline decoration-dotted underline-offset-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/50 rounded"
-										aria-expanded={showTranscript}
-										aria-controls="video-transcricao"
-									>
-										{showTranscript ? 'Ocultar transcrição' : 'Ver transcrição'}
-									</button>
-								</div>
-								{showTranscript && (
-									<div id="video-transcricao" className="mt-2 rounded-md bg-white/80 p-3 text-xs leading-relaxed text-gray-700 ring-1 ring-gray-200">
-										<p><strong>Transcrição resumida:</strong> Bem-vindo ao programa Belz Conecta Saúde. Integramos prevenção, cultura organizacional e saúde mental em um fluxo estratégico medindo impacto real e apoiando decisões de RH.</p>
-									</div>
-								)}
 						</div>
 					</div>
 				</div>
