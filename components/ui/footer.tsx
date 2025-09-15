@@ -91,8 +91,24 @@ export default function Footer({ border = false }: { border?: boolean }) {
             </ul>
             <div className="pt-4 space-y-1 text-sm text-gray-600">
               <div>
-                <a href="https://wa.me/558191554660" className="hover:text-brand-dark transition" aria-label="WhatsApp atendimento Belz Conecta Saúde">
-                  +55 81 9155-4660 <span className="text-xs text-gray-400">(WhatsApp)</span>
+                {/* Botão WhatsApp com mensagem pré-preenchida */}
+                <a
+                  href="https://wa.me/5581991554660?text=Ol%C3%A1!%20Tenho%20interesse%20em%20conhecer%20o%20programa%20Belz%20Conecta%20Sa%C3%BAde.%20Poderia%20me%20enviar%20mais%20informa%C3%A7%C3%B5es%3F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 rounded-md bg-brand-primary px-4 py-2 font-medium text-white shadow-sm outline-none transition focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 hover:bg-brand-dark active:scale-[0.98]"
+                  aria-label="Iniciar conversa no WhatsApp com mensagem pré-preenchida para o atendimento Belz Conecta Saúde"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="h-5 w-5 fill-current"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20.52 3.48A11.85 11.85 0 0012 0C5.37 0 .14 5.23.14 11.86c0 2.09.55 4.14 1.6 5.95L0 24l6.37-1.67a11.84 11.84 0 005.63 1.43h.01c6.63 0 11.86-5.23 11.86-11.86 0-3.17-1.24-6.15-3.49-8.42zM12 21.52a9.6 9.6 0 01-4.89-1.34l-.35-.2-3.78.99 1.01-3.68-.23-.38a9.65 9.65 0 01-1.48-5.16C2.29 6.44 6.63 2.1 12 2.1c2.58 0 5 1 6.82 2.82a9.57 9.57 0 012.82 6.8c0 5.37-4.34 9.8-9.66 9.8zm5.29-7.18c-.29-.15-1.72-.85-1.99-.95-.27-.1-.47-.15-.67.15s-.77.95-.95 1.15-.35.22-.64.07c-.29-.15-1.23-.45-2.34-1.44-.86-.77-1.44-1.72-1.61-2-.17-.29-.02-.44.13-.59.13-.13.29-.34.43-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.29-1.04 1-1.04 2.44s1.07 2.84 1.22 3.04c.15.19 2.11 3.22 5.11 4.52.71.31 1.27.5 1.7.64.72.23 1.38.2 1.9.12.58-.09 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.2-.55-.35z" />
+                  </svg>
+                  <span className="sr-only">Abrir WhatsApp: </span>
+                  <span className="whitespace-nowrap">Falar no WhatsApp</span>
+                  <span className="text-xs font-normal text-white/70">(resposta rápida)</span>
                 </a>
               </div>
               <div>
