@@ -9,7 +9,7 @@
 Use it for whatever you want, and be sure to reach us out on X if you build anything cool/useful with it.
 Created and maintained with ❤️ by [Cruip.com](https://cruip.com/).
 
-_Version 1.3.3 built with Tailwind CSS and React + Vite is available [here](https://github.com/cruip/tailwind-landing-page-template/releases/tag/1.3.3)._
+_Version 1.3.3 built with Tailwind CSS and React + Vite is available in the release page: [Release 1.3.3](https://github.com/cruip/tailwind-landing-page-template/releases/tag/1.3.3)._ 
 
 ## Live demo
 
@@ -21,7 +21,39 @@ Check the live demo here 👉️ [https://simple.cruip.com/](https://simple.crui
 
 ## Design files
 
-If you need the design files, you can download them from Figma's Community 👉 https://bit.ly/3HOZMpf
+If you need the design files, you can download them from Figma's Community 👉 <https://bit.ly/3HOZMpf>
+
+---
+
+## 📌 Customização Belz Conecta Saúde
+
+Esta instância do template foi adaptada para a landing page do programa **Belz Conecta Saúde**. Foram aplicadas alterações de identidade visual, copy e reorganização de seções. Abaixo um resumo da estrutura atual de componentes semânticos:
+
+| Seção | Arquivo | ID âncora | Observações |
+|-------|---------|-----------|-------------|
+| Hero | `components/hero-section.tsx` | `#quem-somos` | Vídeo com thumbnail, play manual e controles personalizados |
+| Jornada | `components/journey-section.tsx` | `#jornada` | Grid de 6 ações (médico, psicologia, nutrição, pilates, yoga/mindfulness, ginástica) |
+| Pilares | `components/pillars-section.tsx` | `#pilares` | Pilares estratégicos com animação e ícones inline |
+| Benefícios | `components/benefits-section.tsx` | `#beneficios` | Depoimento/benefício institucional mock |
+| Formulário | `components/lead-form-section.tsx` | `#contato` | Captura: nome, cargo, empresa, email, whatsapp (mock submit) |
+| Footer | `components/ui/footer.tsx` | — | Big word “CONECTA”, links institucionais |
+
+Outras notas:
+Lista de ajustes principais:
+
+- Paleta principal em variáveis CSS: `--color-brand-dark`, `--color-brand-primary`, etc.
+- Player de vídeo carrega o arquivo somente após interação (lazy) e inicia com áudio ativo.
+- Componentes originais (`hero-home.tsx`, `cta.tsx`, `features-planet.tsx`, `large-testimonial.tsx`, `lead-form.tsx`) foram incorporados e removidos após migração para nomes semânticos.
+- Caso precise reverter, consulte o histórico do repositório (git).
+
+### Próximos Possíveis Incrementos
+
+- Inserir legendas reais (`.vtt`) no vídeo.
+- Criar endpoint/API real para submissão do formulário.
+- Adicionar testes de acessibilidade (axe) e métricas de performance (Lighthouse).
+- Criar barrel `components/sections/index.ts` para import centralizado.
+
+---
 
 ## Usage
 
@@ -68,7 +100,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 This template has been developed with the App Router (`app`) and React Server Components. If you’re unfamiliar with these beta features, you can find more information about them on the Next.js beta documentation page. So, please note that any request dealing with React (e.g. extra features, customisations, et cetera) is to be considered out of the support scope.
 
-For more information about what support covers, please see our (FAQs)[https://cruip.com/faq/].
+For more information about what support covers, please see our [FAQs](https://cruip.com/faq/).
 
 ## Credits
 

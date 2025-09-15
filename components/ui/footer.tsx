@@ -1,212 +1,119 @@
+"use client";
 import Link from "next/link";
 import Logo from "./logo";
+import { useMemo } from "react";
 
 export default function Footer({ border = false }: { border?: boolean }) {
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
   return (
     <footer>
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+  <div className="w-full px-4 sm:px-8 xl:px-16">
         {/* Top area: Blocks */}
         <div
           className={`grid gap-10 py-8 sm:grid-cols-12 md:py-12 ${border ? "border-t [border-image:linear-gradient(to_right,transparent,var(--color-slate-200),transparent)1]" : ""}`}
         >
-          {/* 1st block */}
-          <div className="space-y-2 sm:col-span-12 lg:col-span-4">
-            <div>
-              <Logo />
+          {/* Identidade */}
+          <div className="space-y-3 sm:col-span-12 lg:col-span-4">
+            <Logo />
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Programa corporativo de saúde integrada da <Link href="https://www.belzseguros.com.br" target="_blank" rel="noopener noreferrer" className="text-brand-primary hover:text-brand-dark underline underline-offset-2">Belz Seguros</Link>,
+              conectando prevenção, cuidado contínuo e bem-estar para elevar a qualidade de vida e reduzir custos assistenciais.
+            </p>
+            <div className="text-xs text-gray-500">
+              &copy; {currentYear} Belz Seguros. Todos os direitos reservados.
             </div>
-            <div className="text-sm text-gray-600">
-              &copy; Cruip.com - All rights reserved.
+          </div>
+
+          {/* Programa */}
+          <div className="space-y-2 sm:col-span-6 md:col-span-3 lg:col-span-2">
+            <h3 className="text-sm font-medium text-brand-dark">Programa</h3>
+            <ul className="space-y-2 text-sm">
+              <li><a className="text-gray-600 transition hover:text-gray-900" href="#quem-somos">Quem Somos</a></li>
+              <li><a className="text-gray-600 transition hover:text-gray-900" href="#pilares">Pilares</a></li>
+              <li><a className="text-gray-600 transition hover:text-gray-900" href="#beneficios">Benefícios</a></li>
+              <li><a className="text-gray-600 transition hover:text-gray-900" href="#jornada">Jornada</a></li>
+              <li><a className="text-gray-600 transition hover:text-gray-900" href="#contato">Contato</a></li>
+            </ul>
+          </div>
+
+          {/* Institucional */}
+          <div className="space-y-2 sm:col-span-6 md:col-span-3 lg:col-span-2">
+            <h3 className="text-sm font-medium text-brand-dark">Institucional</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link className="text-gray-600 transition hover:text-gray-900" href="https://www.belzseguros.com.br" target="_blank" rel="noopener noreferrer">Site Belz Seguros</Link></li>
+              <li><Link className="text-gray-600 transition hover:text-gray-900" href="https://www.belzseguros.com.br/sobre" target="_blank" rel="noopener noreferrer">Sobre</Link></li>
+              <li><Link className="text-gray-600 transition hover:text-gray-900" href="https://www.belzseguros.com.br/blog" target="_blank" rel="noopener noreferrer">Blog</Link></li>
+              <li><Link className="text-gray-600 transition hover:text-gray-900" href="https://www.belzseguros.com.br/carreiras" target="_blank" rel="noopener noreferrer">Carreiras</Link></li>
+              <li><Link className="text-gray-600 transition hover:text-gray-900" href="https://www.belzseguros.com.br/contato" target="_blank" rel="noopener noreferrer">Fale Conosco</Link></li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div className="space-y-2 sm:col-span-6 md:col-span-3 lg:col-span-2">
+            <h3 className="text-sm font-medium text-brand-dark">Legal</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link className="text-gray-600 transition hover:text-gray-900" href="https://www.belzseguros.com.br/privacidade" target="_blank" rel="noopener noreferrer">Privacidade</Link></li>
+              <li><Link className="text-gray-600 transition hover:text-gray-900" href="https://www.belzseguros.com.br/termos" target="_blank" rel="noopener noreferrer">Termos de Uso</Link></li>
+              <li><Link className="text-gray-600 transition hover:text-gray-900" href="https://www.belzseguros.com.br/lgpd" target="_blank" rel="noopener noreferrer">LGPD</Link></li>
+              <li><Link className="text-gray-600 transition hover:text-gray-900" href="https://www.belzseguros.com.br/seguranca" target="_blank" rel="noopener noreferrer">Segurança</Link></li>
+              <li><Link className="text-gray-600 transition hover:text-gray-900" href="https://www.belzseguros.com.br/cookies" target="_blank" rel="noopener noreferrer">Cookies</Link></li>
+            </ul>
+          </div>
+
+          {/* Social & Contato */}
+          <div className="space-y-3 sm:col-span-6 md:col-span-3 lg:col-span-2">
+            <h3 className="text-sm font-medium text-brand-dark">Conexões</h3>
+            <ul className="flex gap-2">
+              <li>
+                <Link
+                  className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-200 text-brand-primary transition hover:border-brand-primary hover:text-brand-dark"
+                  href="https://www.linkedin.com/company/conecta-sa%C3%BAdee/posts/?feedView=all" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Conecta Saúde"
+                >
+                  <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3zM14.5 9c-2.485 0-4.5 2.239-4.5 5v7h-4V9h4v2.101S11.248 9 14.5 9c3.584 0 5.5 2.604 5.5 6.002V21h-4v-5.25c0-3.045-1.275-3.75-2.5-3.75z" /></svg>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-200 text-brand-primary transition hover:border-brand-primary hover:text-brand-dark"
+                  href="https://www.instagram.com/belzconectasaude/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Belz Conecta Saúde"
+                >
+                  <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.25-.88a.88.88 0 110 1.76.88.88 0 010-1.76z"/></svg>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-200 text-brand-primary transition hover:border-brand-primary hover:text-brand-dark"
+                  href="https://www.youtube.com/belzseguros" target="_blank" rel="noopener noreferrer" aria-label="YouTube Belz Seguros"
+                >
+                  <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.543 6.498a2.697 2.697 0 00-1.898-1.913C17.864 4.167 12 4.167 12 4.167s-5.864 0-7.645.418A2.697 2.697 0 002.457 6.5C2.04 8.281 2.04 12 2.04 12s0 3.719.417 5.502a2.697 2.697 0 001.898 1.913c1.781.417 7.645.417 7.645.417s5.864 0 7.645-.418a2.697 2.697 0 001.898-1.913C21.96 15.72 21.96 12 21.96 12s0-3.719-.417-5.502zM10.833 15.167V8.833L15.5 12l-4.667 3.167z"/></svg>
+                </Link>
+              </li>
+            </ul>
+            <div className="pt-4 space-y-1 text-sm text-gray-600">
+              <div>
+                <a href="https://wa.me/558191554660" className="hover:text-brand-dark transition" aria-label="WhatsApp atendimento Belz Conecta Saúde">
+                  +55 81 9155-4660 <span className="text-xs text-gray-400">(WhatsApp)</span>
+                </a>
+              </div>
+              <div>
+                <a href="tel:+558140425678" className="hover:text-brand-dark transition" aria-label="Telefone comercial Belz Conecta Saúde">
+                  +55 (81) 4042.5678
+                </a>
+              </div>
             </div>
-          </div>
-
-          {/* 2nd block */}
-          <div className="space-y-2 sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h3 className="text-sm font-medium">Product</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Integrations
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Pricing & Plans
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Changelog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Our method
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* 3rd block */}
-          <div className="space-y-2 sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h3 className="text-sm font-medium">Company</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  About us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Diversity & Inclusion
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Financial statements
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* 4th block */}
-          <div className="space-y-2 sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h3 className="text-sm font-medium">Resources</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Community
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Terms of service
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="text-gray-600 transition hover:text-gray-900"
-                  href="#0"
-                >
-                  Report a vulnerability
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* 5th block */}
-          <div className="space-y-2 sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h3 className="text-sm font-medium">Social</h3>
-            <ul className="flex gap-1">
-              <li>
-                <Link
-                  className="flex items-center justify-center text-blue-500 transition hover:text-blue-600"
-                  href="#0"
-                  aria-label="Twitter"
-                >
-                  <svg
-                    className="h-8 w-8 fill-current"
-                    viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="m13.063 9 3.495 4.475L20.601 9h2.454l-5.359 5.931L24 23h-4.938l-3.866-4.893L10.771 23H8.316l5.735-6.342L8 9h5.063Zm-.74 1.347h-1.457l8.875 11.232h1.36l-8.778-11.232Z"></path>
-                  </svg>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="flex items-center justify-center text-blue-500 transition hover:text-blue-600"
-                  href="#0"
-                  aria-label="Medium"
-                >
-                  <svg
-                    className="h-8 w-8 fill-current"
-                    viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M23 8H9a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1Zm-1.708 3.791-.858.823a.251.251 0 0 0-.1.241V18.9a.251.251 0 0 0 .1.241l.838.823v.181h-4.215v-.181l.868-.843c.085-.085.085-.11.085-.241v-4.887l-2.41 6.131h-.329l-2.81-6.13V18.1a.567.567 0 0 0 .156.472l1.129 1.37v.181h-3.2v-.181l1.129-1.37a.547.547 0 0 0 .146-.472v-4.749a.416.416 0 0 0-.138-.351l-1-1.209v-.181H13.8l2.4 5.283 2.122-5.283h2.971l-.001.181Z"></path>
-                  </svg>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className="flex items-center justify-center text-blue-500 transition hover:text-blue-600"
-                  href="#0"
-                  aria-label="Github"
-                >
-                  <svg
-                    className="h-8 w-8 fill-current"
-                    viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M16 8.2c-4.4 0-8 3.6-8 8 0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4V22c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.4.6.9.6 1.6v2.2c0 .2.1.5.6.4 3.2-1.1 5.5-4.1 5.5-7.6-.1-4.4-3.7-8-8.1-8z"></path>
-                  </svg>
-                </Link>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
 
       {/* Big text */}
       <div className="relative -mt-16 h-60 w-full" aria-hidden="true">
-        <div className="pointer-events-none absolute left-1/2 -z-10 -translate-x-1/2 text-center text-[348px] font-bold leading-none before:bg-linear-to-b before:from-gray-200 before:to-gray-100/30 before:to-80% before:bg-clip-text before:text-transparent before:content-['Simple'] after:absolute after:inset-0 after:bg-gray-300/70 after:bg-clip-text after:text-transparent after:mix-blend-darken after:content-['Simple'] after:[text-shadow:0_1px_0_white]"></div>
+        <div className="pointer-events-none absolute left-1/2 -z-10 -translate-x-1/2 text-center text-[300px] md:text-[340px] font-bold leading-none tracking-tight before:bg-linear-to-b before:from-gray-200 before:to-gray-100/30 before:to-80% before:bg-clip-text before:text-transparent before:content-['CONECTA'] after:absolute after:inset-0 after:bg-gray-300/70 after:bg-clip-text after:text-transparent after:mix-blend-darken after:content-['CONECTA'] after:[text-shadow:0_1px_0_white]"></div>
         {/* Glow */}
         <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-2/3"
           aria-hidden="true"
         >
-          <div className="h-56 w-56 rounded-full border-[20px] border-blue-700 blur-[80px]"></div>
+          <div className="h-56 w-56 rounded-full border-[20px] border-brand-primary blur-[80px]"></div>
         </div>
       </div>
     </footer>
