@@ -32,7 +32,7 @@ export default function LoadingSplash() {
         {mounted ? (
           <motion.div
             animate={{
-              scale: [1, 1.5, 1],
+              scale: [1, 3.2, 1],
             }}
             transition={{
               duration: 1.5,
