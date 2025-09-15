@@ -1,7 +1,11 @@
 {
-  "name": "simple-next",
+  "name": "belz-conecta-saude-landing",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://belz-conecta-saude.vercel.app",
+  "engines": { "node": ">=18.18.0" },
+  "keywords": ["belz", "saude", "corporativa", "landing", "nextjs", "tailwind"],
+  "author": "Belz Conecta Saúde",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

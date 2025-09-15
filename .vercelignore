@@ -1,0 +1,23 @@
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Git
+.git/
+.gitignore
+
+# Tests / coverage (se adicionados futuramente)
+coverage/
+*.test.ts
+*.test.tsx
+
+# Misc
+scripts/
