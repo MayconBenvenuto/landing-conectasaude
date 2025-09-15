@@ -15,7 +15,8 @@ export const metadata: Metadata = {
     template: "%s | Belz Conecta Saúde",
   },
   description: "Programa corporativo integrado: gestão de riscos psicossociais, saúde mental, prevenção e cultura organizacional com indicadores.",
-  metadataBase: new URL("https://www.exemplo.com"),
+  // Base do site para geração de URLs absolutas em metadata / sitemap
+  metadataBase: new URL("https://belz-conecta-saude.vercel.app"),
   alternates: { canonical: "/" },
   icons: {
     icon: [
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Belz Conecta Saúde",
     description: "Programa integrado de saúde corporativa com impacto mensurável.",
-    url: "https://www.exemplo.com/",
+  url: "https://belz-conecta-saude.vercel.app/",
     siteName: "Belz Conecta Saúde",
     locale: "pt_BR",
     type: "website",

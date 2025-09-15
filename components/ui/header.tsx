@@ -1,13 +1,17 @@
 import Link from "next/link";
 import Logo from "./logo";
+import { useState } from "react";
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
+  const toggle = () => setOpen(o => !o);
+
   return (
-    <header className="fixed top-2 z-30 w-full md:top-6">
-      <div className="w-full px-4 sm:px-8 xl:px-16">
+    <header className="fixed inset-x-0 top-0 z-30 w-full pt-2 md:pt-4">
+      <div className="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-10 xl:px-16">
         {/* Container principal do header */}
         <div
-          className="relative flex h-14 items-center justify-between gap-3 rounded-2xl px-3 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08),0_0_0_1px_rgba(255,255,255,0.4)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:[background:linear-gradient(135deg,rgba(255,255,255,0.55),rgba(255,255,255,0.35))] before:opacity-90"
+          className="relative flex h-14 items-center justify-between gap-2 rounded-xl border border-white/40 bg-white/70 px-2 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.08)] backdrop-blur-xl dark:border-white/10 dark:bg-gray-900/70 sm:gap-3 sm:px-3 md:rounded-2xl md:px-4 before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:[background:linear-gradient(135deg,rgba(255,255,255,0.55),rgba(255,255,255,0.3))] before:opacity-90"
         >
           {/* Camada interna (surface) com efeito liquid glass: brilho sutil + highlight superior */}
           <div
@@ -28,8 +32,44 @@ export default function Header() {
           </div>
 
           {/* Navegação principal */}
-          <nav className="relative flex flex-1 items-center justify-end">
-            <ul className="flex items-center gap-1.5 text-sm font-medium">
+          {/* Botão menu mobile */}
+          <div className="flex flex-1 items-center justify-end md:hidden">
+            <button
+              type="button"
+              onClick={toggle}
+              aria-expanded={open}
+              aria-controls="primary-navigation"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/40 bg-white/60 text-brand-dark shadow-sm transition hover:bg-white/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/60 dark:border-white/10 dark:bg-gray-800/70 dark:text-gray-100 dark:hover:bg-gray-800"
+            >
+              <span className="sr-only">{open ? "Fechar menu" : "Abrir menu"}</span>
+              <svg
+                className="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                {open ? (
+                  <path d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <>
+                    <line x1="3" x2="21" y1="6" y2="6" />
+                    <line x1="3" x2="21" y1="12" y2="12" />
+                    <line x1="3" x2="21" y1="18" y2="18" />
+                  </>
+                )}
+              </svg>
+            </button>
+          </div>
+
+          <nav
+            id="primary-navigation"
+            className={`relative hidden flex-1 items-center justify-end md:flex`}
+          >
+            <ul className="flex items-center gap-1.5 text-xs font-medium sm:text-sm">
               {[
                 { href: '#quem-somos', label: 'Quem Somos' },
                 { href: '#pilares', label: 'Pilares' },
@@ -56,6 +96,35 @@ export default function Header() {
               </li>
             </ul>
           </nav>
+        </div>
+        {/* Drawer mobile */}
+        <div
+          className={`md:hidden ${open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"} transition-opacity`}
+        >
+          <div className="mt-2 rounded-xl border border-white/40 bg-white/80 p-3 backdrop-blur-xl shadow-lg dark:border-white/10 dark:bg-gray-900/80">
+            <ul className="flex flex-col gap-1 text-sm font-medium">
+              {[{ href: '#quem-somos', label: 'Quem Somos' }, { href: '#pilares', label: 'Pilares' }, { href: '#beneficios', label: 'Benefícios' }, { href: '#jornada', label: 'Jornada' }].map(item => (
+                <li key={item.href}>
+                  <a
+                    onClick={() => setOpen(false)}
+                    href={item.href}
+                    className="block rounded-md px-3 py-2 text-brand-dark/80 transition-colors hover:bg-brand-primary/10 hover:text-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/40"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a
+                  href="#contato"
+                  onClick={() => setOpen(false)}
+                  className="mt-1 inline-flex w-full items-center justify-center gap-1 rounded-lg bg-brand-primary px-4 py-2 text-white shadow hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  Fale conosco
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </header>

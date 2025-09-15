@@ -59,78 +59,70 @@ export default function HeroSection() {
 			<PageIllustration />
 			<div className="w-full px-4 sm:px-8 xl:px-16">
 				{/* Hero content em duas colunas no desktop */}
-				<div className="pt-32 pb-12 md:pt-40 md:pb-20">
-					<div className="grid items-center gap-12 lg:grid-cols-12">
+				<div className="pt-28 pb-10 md:pt-36 md:pb-20">
+					<div className="grid items-center gap-12 sm:gap-14 lg:grid-cols-12">
 						{/* Coluna Texto */}
 						<div className="lg:col-span-6 text-center lg:text-left">
 							<div className="mb-8">
-								<h1 className="font-extrabold tracking-tight leading-[1.08] text-[clamp(2.5rem,5vw,3.75rem)] text-brand-dark flex flex-col gap-3">
-									<span className="inline-block">
+								<h1 className="font-extrabold tracking-tight text-brand-dark flex flex-col gap-4 leading-tight text-[clamp(1.95rem,4.6vw,3.25rem)]">
+									<span className="block">
 										<BlurText
 											as="span"
 											text={"Belz Conecta Saúde"}
 											animateBy="letters"
 											direction="top"
 											className="inline-block"
-											delay={80}
-											stagger={18}
-											durationPerItem={420}
+											delay={60}
+											stagger={16}
+											durationPerItem={360}
 										/>
 									</span>
-									<span className="inline-flex flex-wrap items-baseline gap-3">
-										<span className="inline-block">
-											<BlurText
-												as="span"
-												text={"Seu parceiro estratégico em"}
-												animateBy="letters"
-												direction="top"
-												className="inline-block"
-												delay={300}
-												stagger={14}
-												durationPerItem={380}
-											/>
-										</span>
+									<span className="block">
+										<BlurText
+											as="span"
+											text={"Parceiro estratégico em"}
+											animateBy="letters"
+											direction="top"
+											className="inline-block"
+											delay={220}
+											stagger={14}
+											durationPerItem={340}
+										/>
+									</span>
+									<span className="inline-flex items-center text-center justify-center lg:justify-start">
 										<RotatingText
 											texts={['saúde e bem-estar', 'produtividade', 'qualidade de vida', 'prevenção', 'cultura humana', 'saúde mental']}
-											mainClassName="px-2 sm:px-2 md:px-3 bg-[#011147] text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+											mainClassName="px-2 md:px-1 bg-[#011147] text-white overflow-hidden py-1 md:py-1 justify-center rounded-md text-3xl md:text-4xl lg:text-[3.25rem] whitespace-nowrap min-h-[2.6rem] md:min-h-[3.4rem]"
 											staggerFrom={"last"}
 											initial={{ y: "100%" }}
-											animate={{ y: 0 }}
-											exit={{ y: "-120%" }}
-											staggerDuration={0.075}
-											splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-											transition={{ type: "spring", damping: 30, stiffness: 400 }}
+											animate={{ y: 0, opacity: 1 }}
+											exit={{ y: "-120%" , opacity: 0 }}
+											staggerDuration={0.06}
+											splitLevelClassName="overflow-hidden pb-0.5"
+											transition={{ type: "spring", damping: 32, stiffness: 420 }}
 											rotationInterval={3500}
-											/>
-										
+										/>
 									</span>
 								</h1>
 							</div>
 							<p
-								className="mb-8 text-lg text-gray-700 max-w-xl mx-auto lg:mx-0"
+								className="mb-8 text-base sm:text-lg text-gray-700 max-w-xl mx-auto lg:mx-0"
 							>
 								Programa integrado de saúde e qualidade de vida que apoia o RH na prevenção de riscos psicossociais, promoção de hábitos saudáveis e fortalecimento de uma cultura humana, sustentável e produtiva.
 							</p>
-							<div className="relative before:absolute before:inset-0 before:border-y before:[border-image:linear-gradient(to_right,transparent,--theme(--color-slate-300/.8),transparent)1]">
-								<div
-									className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center lg:justify-start"
+							<div className="mt-2 flex max-w-md flex-col gap-3 sm:flex-row sm:items-center sm:justify-start lg:justify-start">
+								<a
+									className="inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-brand-dark px-6 py-3 text-sm font-semibold text-white shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/70 hover:brightness-110"
+									href="#contato"
 								>
-									<a
-										className="btn group mb-4 w-full bg-linear-to-t from-brand-primary to-brand-dark bg-[length:100%_100%] bg-[bottom] text-white shadow-sm hover:bg-[length:100%_150%] sm:mb-0 sm:w-auto"
-										href="#contato"
-									>
-										<span className="relative inline-flex items-center">
-											Solicitar Apresentação
-											<span className="ml-1 tracking-normal text-blue-300 transition-transform group-hover:translate-x-0.5">-&gt;</span>
-										</span>
-									</a>
-									<a
-										className="btn w-full bg-white text-brand-dark shadow-sm hover:bg-gray-50 sm:ml-4 sm:w-auto"
-										href="#pilares"
-									>
-										Ver Pilares
-									</a>
-								</div>
+									<span className="flex items-center">Solicitar Apresentação <span className="ml-1 text-brand-primary/40">→</span></span>
+								</a>
+								<a
+									className="inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-white px-6 py-3 text-sm font-medium text-brand-dark ring-1 ring-inset ring-brand-dark/10 shadow-sm hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary/50"
+									href="#pilares"
+								>
+									Ver Pilares
+								</a>
 							</div>
 						</div>
 
