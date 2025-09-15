@@ -1,7 +1,8 @@
 import "./css/style.css";
 
 import { Inter } from "next/font/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import LoadingSplash from '@/components/ui/loading-splash';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -44,7 +45,11 @@ export const metadata: Metadata = {
     images: ["/images-conecta/image-hero.png"]
   },
   robots: { index: true, follow: true },
-  themeColor: "#0B3C87"
+};
+
+// Migrar themeColor para viewport (Next.js 15 recomendação)
+export const viewport: Viewport = {
+  themeColor: '#0B3C87'
 };
 
 export default function RootLayout({
@@ -56,6 +61,7 @@ export default function RootLayout({
     <html lang="pt-BR" className="scroll-smooth">
       <head />
       <body className={`${inter.variable} bg-gray-50 font-inter tracking-tight text-gray-900 antialiased`}>
+        <LoadingSplash />
         <div className="flex min-h-screen flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
           {children}
         </div>

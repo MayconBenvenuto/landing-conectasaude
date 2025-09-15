@@ -4,8 +4,11 @@ export const metadata = {
     "Programa integrado de saúde corporativa: gestão de riscos psicossociais, saúde mental, prevenção e engajamento com indicadores e impacto mensurável.",
 };
 
+import dynamic from 'next/dynamic';
 import HeroSection from "@/components/hero-section";
-import PartnersCarouselSection from "@/components/partners-carousel-section";
+// Carrossel só depois do paint inicial (client heavy). Removido ssr:false para compat com Server Component.
+const PartnersCarouselSection = dynamic(() => import('@/components/partners-carousel-section'));
+// Outras seções são mais leves / estáticas - manter SSR para SEO
 import JourneySection from "@/components/journey-section";
 import RiskWorkflowSection from "@/components/risk-workflow-section";
 import PillarsSection from "@/components/pillars-section";

@@ -196,6 +196,7 @@
       transform: translateX(-100%);
     }
   }
+
 }
 
 /*
@@ -345,4 +346,16 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Respeitar prefers-reduced-motion para animações */
+  :root {
+    --animation-play-state: running;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --animation-play-state: paused;
+    }
+  }
 }
+

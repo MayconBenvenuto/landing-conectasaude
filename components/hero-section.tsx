@@ -136,7 +136,7 @@ export default function HeroSection() {
 										className="absolute inset-0 z-20 flex h-full w-full flex-col items-center justify-center gap-4 bg-brand-dark/60 p-6 text-center text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
 										aria-label="Reproduzir vídeo de apresentação"
 									>
-										<div className="absolute inset-0 -z-10"><Image src="/images-conecta/image-hero.png" alt="Thumbnail vídeo Belz Conecta Saúde" fill priority sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" /></div>
+										<div className="absolute inset-0 -z-10"><Image src="/images-conecta/image-hero.png" alt="Thumbnail vídeo Belz Conecta Saúde" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" placeholder="blur" blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADmQGmLbrJ7QAAAABJRU5ErkJggg==" /></div>
 										<span className="inline-flex items-center gap-3 rounded-full bg-white/10 px-6 py-3 text-sm font-medium backdrop-blur-md ring-1 ring-white/20">
 											<svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 8.40192C17.8333 9.17172 17.8333 11.0762 16.5 11.846L3 19.6371C1.66667 20.4069 0 19.4431 0 17.9264V2.32151C0 0.804805 1.66667 -0.158945 3 0.610855L16.5 8.40192Z" fill="currentColor" /></svg>
 											Assistir apresentação
