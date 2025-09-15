@@ -84,17 +84,23 @@ export default function LeadFormSection() {
 								Preferir falar agora? Use um dos canais abaixo. Nosso atendimento responde em horário comercial.
 							</p>
 							<ul className="space-y-5">
-								<li className="flex gap-4">
-									<span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-green-500 to-green-600 text-white shadow-sm">
-										<svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.84 11.84 0 0012 0C5.37 0 .02 5.18.02 11.57c0 2.04.54 4.03 1.57 5.79L0 24l6.86-1.79a12.2 12.2 0 005.09 1.13h.01c6.63 0 12-5.18 12-11.57 0-3.09-1.32-5.99-3.44-8.29zM12 21.53h-.01a10.7 10.7 0 01-4.57-1.06l-.33-.16-4.07 1.06 1.09-3.89-.22-.36a9.73 9.73 0 01-1.47-5.05C2.42 6.3 6.73 2.2 12 2.2c2.63 0 5.1 1.02 6.96 2.86a9.68 9.68 0 012.88 6.51c0 5.1-4.31 9.46-9.82 9.96zm5.35-7.42c-.29-.15-1.71-.84-1.97-.94-.27-.1-.47-.15-.66.15-.19.29-.76.94-.93 1.13-.17.19-.34.21-.63.06-.29-.15-1.23-.45-2.34-1.43-.86-.76-1.44-1.7-1.61-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.03-.51-.08-.15-.66-1.57-.91-2.15-.24-.58-.48-.5-.66-.51h-.57c-.19 0-.5.07-.76.36-.26.29-1 1-1 2.43 0 1.43 1.02 2.81 1.16 3 .15.19 2 3.14 4.92 4.37.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.71-.7 1.95-1.38.24-.67.24-1.24.17-1.38-.07-.13-.26-.21-.55-.36z" /></svg>
-									</span>
-									<div>
-										<p className="text-xs uppercase tracking-wide text-gray-500 font-medium">WhatsApp</p>
-										<a href="https://wa.me/558191554660?text=Ol%C3%A1%2C%20gostaria%20de%20receber%20a%20apresenta%C3%A7%C3%A3o%20do%20programa%20Belz%20Conecta%20Sa%C3%BAde." target="_blank" rel="noopener noreferrer" className="text-base font-medium text-brand-dark hover:text-green-600 transition" aria-label="Abrir conversa WhatsApp com mensagem pré-preenchida">
-											+55 81 9155-4660
-										</a>
-										<p className="text-xs text-gray-500 mt-1">Resposta rápida em horário comercial.</p>
-									</div>
+								<li>
+									<a
+										className="group flex gap-4 rounded-xl border border-green-200 bg-white/70 p-4 pr-6 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
+										href="https://wa.me/5581991554660?text=Ol%C3%A1!%20Tenho%20interesse%20em%20conhecer%20o%20programa%20Belz%20Conecta%20Sa%C3%BAde.%20Poderia%20me%20enviar%20a%20apresenta%C3%A7%C3%A3o%3F"
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Iniciar conversa no WhatsApp com mensagem pré-preenchida"
+									>
+										<span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-linear-to-br from-green-500 to-green-600 text-white shadow-sm transition group-hover:scale-105">
+											<svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.84 11.84 0 0012 0C5.37 0 .02 5.18.02 11.57c0 2.04.54 4.03 1.57 5.79L0 24l6.86-1.79a12.2 12.2 0 005.09 1.13h.01c6.63 0 12-5.18 12-11.57 0-3.09-1.32-5.99-3.44-8.29zM12 21.53h-.01a10.7 10.7 0 01-4.57-1.06l-.33-.16-4.07 1.06 1.09-3.89-.22-.36a9.73 9.73 0 01-1.47-5.05C2.42 6.3 6.73 2.2 12 2.2c2.63 0 5.1 1.02 6.96 2.86a9.68 9.68 0 012.88 6.51c0 5.1-4.31 9.46-9.82 9.96zm5.35-7.42c-.29-.15-1.71-.84-1.97-.94-.27-.1-.47-.15-.66.15-.19.29-.76.94-.93 1.13-.17.19-.34.21-.63.06-.29-.15-1.23-.45-2.34-1.43-.86-.76-1.44-1.7-1.61-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.03-.51-.08-.15-.66-1.57-.91-2.15-.24-.58-.48-.5-.66-.51h-.57c-.19 0-.5.07-.76.36-.26.29-1 1-1 2.43 0 1.43 1.02 2.81 1.16 3 .15.19 2 3.14 4.92 4.37.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.55-.08 1.71-.7 1.95-1.38.24-.67.24-1.24.17-1.38-.07-.13-.26-.21-.55-.36z" /></svg>
+										</span>
+										<div className="text-left">
+											<p className="text-xs uppercase tracking-wide text-gray-500 font-medium">WhatsApp</p>
+											<p className="text-base font-semibold text-brand-dark">+55 81 99155-4660 <span className="ml-2 inline-block rounded bg-green-100 px-2 py-0.5 align-middle text-[10px] font-medium text-green-700">rápido</span></p>
+											<p className="mt-1 text-xs text-gray-500">Resposta rápida em horário comercial.</p>
+										</div>
+									</a>
 								</li>
 								<li className="flex gap-4">
 									<span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-linear-to-br from-blue-600 to-blue-500 text-white shadow-sm">
