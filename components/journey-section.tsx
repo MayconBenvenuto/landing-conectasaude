@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Stripes from "@/public/images/stripes-dark.svg";
+import SectionTitle from "./section-title";
 
 // Seção Jornada (antes em cta.tsx)
 export default function JourneySection() {
@@ -30,9 +31,12 @@ export default function JourneySection() {
 							/>
 						</div>
 					<div className="px-4 py-12 md:px-12 md:py-20">
-						<h2 className="mb-6 border-y text-3xl font-bold text-high-contrast [border-image:linear-gradient(to_right,transparent,var(--color-brand-primary),transparent)1] md:mb-6 md:text-4xl">
+						<SectionTitle
+							className="mb-6 border-y [border-image:linear-gradient(to_right,transparent,var(--color-brand-primary),transparent)1] md:mb-6"
+							textClassName="text-3xl font-bold text-high-contrast md:text-4xl"
+						>
 							Jornada de Saúde Integrada
-						</h2>
+						</SectionTitle>
 						{/* Grid de Ações da Jornada */}
 						<div className="mb-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 							{gridItems.map(item => (

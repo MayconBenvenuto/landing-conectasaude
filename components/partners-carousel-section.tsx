@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
+import SectionTitle from "./section-title";
 
 /*
   Seção: Carrossel Infinito de Logos de Parceiros
@@ -70,10 +71,12 @@ export default function PartnersCarouselSection() {
       <div className="w-full px-4 sm:px-8 xl:px-16 mx-auto">
         {/* Cabeçalho da seção */}
         <div className="mb-8 max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold leading-snug text-brand-dark tracking-tight">
-            Rede de parceiros que amplia
-            <span className="block bg-clip-text text-transparent bg-[linear-gradient(90deg,var(--color-brand-primary),var(--color-brand-dark))]">impacto e confiabilidade</span>
-          </h2>
+          <SectionTitle
+            className="my-0"
+            textClassName="text-2xl md:text-3xl font-bold leading-snug tracking-tight"
+          >
+            Rede de parceiros que amplia impacto e confiabilidade
+          </SectionTitle>
           <p className="mt-4 text-base md:text-lg text-gray-600/90 leading-relaxed mx-auto">
             Conectamos organizações de saúde, tecnologia, pesquisa e gestão para fortalecer a entrega do programa e manter práticas atualizadas baseadas em evidências.
           </p>

@@ -67,27 +67,42 @@ export default function HeroSection() {
 									<span className="block">
 										<BlurText
 											as="span"
-											text={"Belz Conecta Saúde"}
+											text={"Belz Conecta Saúde,"}
 											animateBy="letters"
 											direction="top"
 											className="inline-block"
 											delay={60}
 											stagger={16}
-											durationPerItem={360}
+											durationPerItem={960}
 										/>
 									</span>
 									<span className="block">
 										<BlurText
 											as="span"
-											text={"Parceiro estratégico em"}
+											text={"um Ecossistema parceiro"}
 											animateBy="letters"
 											direction="top"
 											className="inline-block"
-											delay={220}
+											delay={920}
 											stagger={14}
-											durationPerItem={340}
+											durationPerItem={1240}
 										/>
 									</span>
+									<span className="block">
+										<BlurText
+											as="span"
+											text={"do RH em"}
+											animateBy="letters"
+											direction="top"
+											className="inline-block"
+											delay={1520}
+											stagger={14}
+											durationPerItem={1740}
+										/>
+									</span>
+
+									{/* Texto rotativo */}
+
 									<span className="inline-flex items-center text-center justify-center lg:justify-start">
 										<RotatingText
 											texts={['saúde e bem-estar', 'produtividade', 'qualidade de vida', 'prevenção', 'cultura humana', 'saúde mental']}

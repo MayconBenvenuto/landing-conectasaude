@@ -1,4 +1,5 @@
 import React from "react";
+import SectionTitle from "./section-title";
 
 // Diagnóstico & Gestão de Riscos Psicossociais
 // Estrutura baseada nos 5 pontos do material: Integração PGR -> Ferramentas -> Análise -> Plano -> Monitoramento.
@@ -35,9 +36,12 @@ export default function RiskWorkflowSection() {
     <section id="diagnostico" className="relative py-20 bg-white">
   <div className="w-full px-4 sm:px-8 xl:px-16">
         <div className="mx-auto max-w-3xl text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4 border-y [border-image:linear-gradient(to_right,transparent,var(--color-brand-primary),transparent)1] py-2">
+          <SectionTitle
+            className="mb-4 border-y [border-image:linear-gradient(to_right,transparent,var(--color-brand-primary),transparent)1] py-2"
+            textClassName="text-3xl md:text-4xl font-bold text-brand-dark"
+          >
             Diagnóstico & Gestão de Riscos Psicossociais
-          </h2>
+          </SectionTitle>
           <p className="text-gray-600 text-lg">Fluxo estruturado para transformar sinais dispersos em decisões estratégicas de bem-estar corporativo.</p>
         </div>
         <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
