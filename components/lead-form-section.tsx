@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import SectionTitle from "./section-title";
 
 interface FormState {
 	nome: string;
@@ -68,9 +69,12 @@ export default function LeadFormSection() {
 		<section id="contato" className="py-20 w-full px-4 sm:px-8 xl:px-16 scroll-mt-32 md:scroll-mt-40">
 			<div className="mx-auto max-w-7xl">
 				<div className="mb-14 text-center max-w-3xl mx-auto">
-					<h2 className="mb-5 text-pretty bg-clip-text text-transparent bg-linear-to-r from-blue-700 via-blue-600 to-sky-500 text-3xl font-bold md:text-4xl tracking-tight">
+					<SectionTitle
+						className="mb-5"
+						textClassName="text-pretty bg-clip-text text-transparent bg-linear-to-r from-blue-700 via-blue-600 to-sky-500 text-3xl font-bold md:text-4xl tracking-tight"
+					>
 						Fale com nosso time
-					</h2>
+					</SectionTitle>
 					<p className="text-gray-600 text-lg leading-relaxed">
 						Preencha ou chame direto nosso time. Estamos prontos para construir saúde corporativa estratégica para sua empresa.
 					</p>

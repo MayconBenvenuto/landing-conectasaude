@@ -1,5 +1,21 @@
 # CHANGELOG.md
 
+## [Unreleased]
+
+### Added
+
+- Animação de scroll para títulos principais de seção via novo componente `SectionTitle` (encapsula `ScrollFloat`).
+
+### Changed
+
+- Substituídos `<h2>` estáticos em múltiplas seções (benefícios, pilares, jornada, diagnóstico/riscos, indicadores & impacto, conformidade, parceiros e formulário de contato) para usar animação coordenada com scroll.
+- Refinada animação de títulos: reduzido y inicial, removido ease "back" em contexto de scrub (agora `ease: none`), introduzido `scrub: 0.6` para suavização e leve `rotateX` inicial para profundidade sutil.
+
+### Notes
+
+- Mantida semântica de heading (`<h2>`), preservando acessibilidade. Animação baseada em GSAP `ScrollTrigger` somente quando elemento entra na janela (scrub) e respeita `prefers-reduced-motion` por ser transformação simples, sem loop contínuo.
+- Adicionado early-return para `prefers-reduced-motion` evitando qualquer transformação e garantindo acessibilidade.
+
 ## [4.0.0] - 2025-02-04
 
 - Updgrade to Tailwind v4

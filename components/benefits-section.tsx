@@ -3,6 +3,7 @@
 import Image from "next/image";
 // Substitui avatar estático anterior pelo logo da empresa para representar o perfil institucional
 import LogoAvatar from "@/public/images-conecta/logo-fundotransparente.png";
+import SectionTitle from "./section-title";
 import { useEffect, useRef, useState } from "react";
 
 // URLs de posts do Instagram fornecidos pelo usuário
@@ -22,25 +23,34 @@ function InstagramEmbed({ url, index }: { url: string; index: number }) {
 		const el = containerRef.current;
 		if (!el) return;
 
-		// IntersectionObserver para carregar somente quando visível
+		// Carrega imediatamente os dois primeiros para percepção de velocidade
+		if (index < 2) {
+			setLoaded(true);
+			return;
+		}
+
+		// IntersectionObserver com margem maior para pré-carregar antes de entrar
 		const observer = new IntersectionObserver(
 			(entries) => {
-				entries.forEach((entry) => {
+				for (const entry of entries) {
 					if (entry.isIntersecting) {
 						setLoaded(true);
 						observer.disconnect();
+						break;
 					}
-				});
+				}
 			},
-			{ rootMargin: "200px 0px" }
+			{ rootMargin: "400px 0px" }
 		);
 		observer.observe(el);
 		return () => observer.disconnect();
-	}, []);
+	}, [index]);
 
 	useEffect(() => {
-		if (loaded && !scriptInjected) {
-			// Evita inserir múltiplas vezes
+		if (!loaded || scriptInjected) return;
+		// Reprocessa com debounce mínimo para agrupar múltiplos loads simultâneos
+		let timeout: any;
+		function inject() {
 			if (!(window as any).instgrm) {
 				const s = document.createElement("script");
 				s.src = "https://www.instagram.com/embed.js";
@@ -48,7 +58,7 @@ function InstagramEmbed({ url, index }: { url: string; index: number }) {
 				s.onload = () => {
 					setScriptInjected(true);
 					// @ts-expect-error lib externa
-					if (window.instgrm?.Embeds) window.instgrm.Embeds.process();
+					window.instgrm?.Embeds?.process();
 				};
 				document.body.appendChild(s);
 			} else {
@@ -57,15 +67,17 @@ function InstagramEmbed({ url, index }: { url: string; index: number }) {
 				window.instgrm.Embeds.process();
 			}
 		}
+		timeout = setTimeout(inject, 50);
+		return () => clearTimeout(timeout);
 	}, [loaded, scriptInjected]);
 
 	return (
 		<div
 			ref={containerRef}
-			className="relative flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-3 sm:p-4 shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-900"
+			className="relative flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white p-3 sm:p-4 shadow-sm transition-colors dark:border-gray-700 dark:bg-gray-900 w-full overflow-hidden aspect-[9/16] min-h-[430px]"
 		>
 			{!loaded && (
-				<div className="flex h-72 w-full flex-col items-center justify-center gap-3 text-center">
+				<div className="flex h-full w-full flex-col items-center justify-center gap-3 text-center">
 					<span className="text-sm text-gray-500">Carregando depoimento {index + 1}…</span>
 					<div className="h-6 w-6 animate-spin rounded-full border-2 border-brand-primary border-t-transparent" aria-hidden="true" />
 				</div>
@@ -87,6 +99,9 @@ function InstagramEmbed({ url, index }: { url: string; index: number }) {
 export default function BenefitsSection() {
 	return (
 		<section id="beneficios" className="scroll-mt-32 md:scroll-mt-40 w-full px-4 sm:px-8 xl:px-16">
+			{/* Preconnect para acelerar handshake do embed */}
+			<link rel="preconnect" href="https://www.instagram.com" />
+			<link rel="dns-prefetch" href="https://www.instagram.com" />
 			<div className="py-12 md:py-20">
 				{/* Cabeçalho limitado para melhor legibilidade */}
 				<div className="mx-auto max-w-2xl text-center space-y-6">
@@ -114,9 +129,12 @@ export default function BenefitsSection() {
 							alt="Logo institucional"
 						/>
 					</div>
-					<h2 className="text-pretty text-2xl font-bold text-gray-900 dark:text-gray-100">
+					<SectionTitle
+						className="my-0"
+						textClassName="text-pretty text-2xl font-bold text-gray-900 dark:text-gray-100"
+					>
 						Resultados reais, histórias que inspiram
-					</h2>
+					</SectionTitle>
 					<p className="text-balance text-sm text-gray-600 dark:text-gray-400 max-w-prose mx-auto">
 						Veja alguns depoimentos em vídeo publicados no Instagram destacando impacto em engajamento, saúde
 						mental e cultura organizacional. Os embeds carregam apenas quando entram na área visível para manter
@@ -124,7 +142,7 @@ export default function BenefitsSection() {
 					</p>
 				</div>
 				{/* Grade em largura maior independente do limite do texto */}
-				<div className="mt-14 mx-auto max-w-5xl grid gap-10 xl:gap-14 sm:grid-cols-2 lg:grid-cols-3 place-items-start">
+				<div className="mt-14 mx-auto max-w-6xl grid gap-12 md:gap-14 lg:gap-16 xl:gap-20 sm:grid-cols-2 lg:grid-cols-3 place-items-stretch">
 					{INSTAGRAM_POSTS.map((url, i) => (
 						<InstagramEmbed key={url} url={url} index={i} />
 					))}

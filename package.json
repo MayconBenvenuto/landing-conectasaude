@@ -21,13 +21,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-  "type-check": "tsc --noEmit",
-  "smtp:test": "ts-node scripts/test-smtp.ts",
-  "smtp:test:esm": "node --loader ts-node/esm scripts/test-smtp.ts"
+    "type-check": "tsc --noEmit",
+    "smtp:test": "ts-node scripts/test-smtp.ts",
+    "smtp:test:esm": "node --loader ts-node/esm scripts/test-smtp.ts"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "framer-motion": "^12.23.12",
+    "gsap": "^3.13.0",
     "next": "15.1.6",
     "nodemailer": "^7.0.6",
     "react": "19.0.0",

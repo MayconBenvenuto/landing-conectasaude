@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import SectionTitle from "./section-title";
 import PlanetImg from "@/public/images/planet.png";
 import PlanetOverlayImg from "@/public/images/planet-overlay.svg";
 import PlanetTagImg01 from "@/public/images/planet-tag-01.png";
@@ -14,9 +15,12 @@ export default function PillarsSection() {
 			<div className="w-full px-4 sm:px-8 xl:px-16">
 				<div className="py-12 md:py-20">
 					<div className="mx-auto max-w-3xl pb-16 text-center md:pb-20">
-						<h2 className="text-3xl font-bold text-high-contrast md:text-4xl">
+						<SectionTitle
+							className="my-0"
+							textClassName="text-3xl font-bold text-high-contrast md:text-4xl"
+						>
 							Pilares do Belz Conecta Saúde
-						</h2>
+						</SectionTitle>
 							<p className="mt-4 text-high-contrast-muted text-lg">Estratégia integrada que une prevenção, cuidado contínuo e fortalecimento cultural para gerar bem-estar mensurável e sustentável.</p>
 							
 							{/* Imagem ilustrativa do programa */}

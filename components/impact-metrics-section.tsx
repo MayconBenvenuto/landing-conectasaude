@@ -1,4 +1,5 @@
 import React from "react";
+import SectionTitle from "./section-title";
 
 // Métricas / KPIs (placeholders iniciais com sufixo *)
 export default function ImpactMetricsSection() {
@@ -15,9 +16,12 @@ export default function ImpactMetricsSection() {
     <section id="resultados" className="relative py-20 bg-white">
   <div className="w-full px-4 sm:px-8 xl:px-16">
         <div className="mx-auto max-w-3xl text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4 border-y [border-image:linear-gradient(to_right,transparent,var(--color-brand-primary),transparent)1] py-2">
+          <SectionTitle
+            className="mb-4 border-y [border-image:linear-gradient(to_right,transparent,var(--color-brand-primary),transparent)1] py-2"
+            textClassName="text-3xl md:text-4xl font-bold text-brand-dark"
+          >
             Indicadores & Impacto
-          </h2>
+          </SectionTitle>
           <p className="text-gray-600 text-lg">Acompanhamos métricas que conectam bem-estar a resultado organizacional — orientando decisões baseadas em evidências.</p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
