@@ -6,18 +6,34 @@ Landing page focada em geração de leads para o programa Belz Conecta Saúde (g
 
 | Área | Objetivo |
 |------|----------|
-| Hero | Mensagem principal + vídeo sob demanda (não pré-carregado) |
+| Hero | Mensagem principal + vídeo sob demanda (não pré-carregado) com legendas |
 | Parceiros | Prova social via carrossel com animação somente quando visível |
 | Jornada | Etapas / ações do programa (grid) |
 | Pilares | Estrutura estratégica (6 pilares) com elementos decorativos acessíveis |
 | Métricas / Benefícios | Autoridade e impacto |
 | Formulário | Captura de contato (nome, empresa, email, etc.) + honeypot anti-spam |
 
+## ✨ Melhorias Recentes (Nov 2024)
+
+### 🎯 Performance
+- ⚡ **Loading splash otimizado**: Reduzido de 1.9s para 1s (melhora FCP)
+- 📊 **Vercel Analytics**: Tracking de conversões e comportamento do usuário
+- 🎬 **Legendas VTT**: Track de legendas acessível no vídeo hero
+
+### 🔍 SEO
+- 🏢 **Schema.org JSON-LD**: Markup estruturado para Organization
+- 📈 **Rich snippets**: Melhor indexação e apresentação no Google
+
+### 🛠️ DevEx
+- 📝 **.env.example**: Documentação completa de variáveis SMTP
+- 📚 **TESTING.md**: Guia para implementação de testes automatizados
+
 ## 🧱 Arquitetura
 
 * `app/` – App Router; página principal em `app/(default)/page.tsx`.
 * `components/*-section.tsx` – Cada bloco narrativo isolado (layout semântico).
 * `components/ui/` – Navegação, footer, itens reutilizáveis.
+* `components/schema-org.tsx` – Schema.org JSON-LD para SEO.
 * `public/` – Imagens (`images-conecta`, `logos-parceiros`, `acoes`), vídeo e favicons.
 * `app/api/lead/route.ts` – Endpoint para submissão do formulário (validação + honeypot).
 * Estilos centrais em `app/css/style.css` (tokens: `--color-brand-*`, utilitárias de contraste, animações).
@@ -34,19 +50,32 @@ Landing page focada em geração de leads para o programa Belz Conecta Saúde (g
 * Texto animado: `<span class="sr-only">` em `RotatingText` para leitores de tela.
 * Tooltips: `role="tooltip"` + `aria-describedby` no carrossel.
 * Imagens decorativas com `alt=""` + `aria-hidden="true"` (ex: elementos orbitais nos pilares).
-* Vídeo: inicia somente após interação; legendas `.vtt` + transcrição expansível.
+* Vídeo: inicia somente após interação; legendas `.vtt` + transcrição expansível + track element.
 * Suporte a `prefers-reduced-motion` (animações pausam ou degradam).
 
 ## ⚙️ Desenvolvimento
 
 ```bash
-pnpm install
-pnpm dev    # Inicia (Turbopack)
-pnpm build  # Build produção
-pnpm start  # Servir build local
+npm install
+npm run dev    # Inicia (Turbopack)
+npm run build  # Build produção
+npm run start  # Servir build local
 ```
 
 Node mínimo definido em `package.json` (engines: `>=18.18.0`).
+
+### 🔐 Variáveis de Ambiente
+
+Copie `.env.example` para `.env.local` e configure:
+
+```bash
+# SMTP (obrigatório para formulário de leads)
+SMTP_HOSTS=smtp.gmail.com,smtp-relay.gmail.com
+SMTP_USER=seu-email@gmail.com
+SMTP_PASS=sua-senha-app
+EMAIL_FROM=noreply@belzconectasaude.com.br
+EMAIL_TO=leads@belzconectasaude.com.br
+```
 
 ## 📡 API de Lead
 
