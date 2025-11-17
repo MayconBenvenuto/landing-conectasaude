@@ -65,28 +65,37 @@ export default function Footer({ border = false }: { border?: boolean }) {
             <h3 className="text-sm font-medium text-brand-dark">Conexões</h3>
             <ul className="flex gap-2">
               <li>
-                <Link
+                <a
                   className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-200 text-brand-primary transition hover:border-brand-primary hover:text-brand-dark"
-                  href="https://www.linkedin.com/company/conecta-sa%C3%BAdee/posts/?feedView=all" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Conecta Saúde"
+                  href="https://www.linkedin.com/company/conecta-sa%C3%BAdee/posts/?feedView=all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Conecta Saúde"
                 >
                   <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3zM14.5 9c-2.485 0-4.5 2.239-4.5 5v7h-4V9h4v2.101S11.248 9 14.5 9c3.584 0 5.5 2.604 5.5 6.002V21h-4v-5.25c0-3.045-1.275-3.75-2.5-3.75z" /></svg>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
+                <a
                   className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-200 text-brand-primary transition hover:border-brand-primary hover:text-brand-dark"
-                  href="https://www.instagram.com/belzconectasaude/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Belz Conecta Saúde"
+                  href="https://www.instagram.com/belzconectasaude/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram Belz Conecta Saúde"
                 >
                   <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.25-.88a.88.88 0 110 1.76.88.88 0 010-1.76z"/></svg>
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
+                <a
                   className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-200 text-brand-primary transition hover:border-brand-primary hover:text-brand-dark"
-                  href="https://www.youtube.com/belzseguros" target="_blank" rel="noopener noreferrer" aria-label="YouTube Belz Seguros"
+                  href="https://www.youtube.com/belzseguros"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube Belz Seguros"
                 >
                   <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.543 6.498a2.697 2.697 0 00-1.898-1.913C17.864 4.167 12 4.167 12 4.167s-5.864 0-7.645.418A2.697 2.697 0 002.457 6.5C2.04 8.281 2.04 12 2.04 12s0 3.719.417 5.502a2.697 2.697 0 001.898 1.913c1.781.417 7.645.417 7.645.417s5.864 0 7.645-.418a2.697 2.697 0 001.898-1.913C21.96 15.72 21.96 12 21.96 12s0-3.719-.417-5.502zM10.833 15.167V8.833L15.5 12l-4.667 3.167z"/></svg>
-                </Link>
+                </a>
               </li>
             </ul>
             <div className="pt-4 space-y-1 text-sm text-gray-600">

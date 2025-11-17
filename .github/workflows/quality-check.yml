@@ -1,0 +1,93 @@
+name: Validação de Qualidade (PR para Main)
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Instalar dependências
+        run: npm ci
+      
+      - name: Type Check
+        run: npm run type-check
+      
+      - name: Lint
+        run: npm run lint
+      
+      - name: Build
+        run: npm run build
+      
+      - name: Verificar tamanho do bundle
+        run: |
+          BUNDLE_SIZE=$(find .next/static -name "*.js" -type f -exec du -ch {} + | grep total | cut -f1)
+          echo "📦 Tamanho total do bundle: $BUNDLE_SIZE"
+          
+          # Adiciona comentário no PR com o tamanho
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            echo "Bundle size: $BUNDLE_SIZE" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Sucesso
+        run: |
+          echo "✅ Todas as verificações passaram!"
+          echo "✅ TypeScript: OK"
+          echo "✅ Linting: OK"
+          echo "✅ Build: OK"
+
+  lighthouse-ci:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Instalar dependências
+        run: npm ci
+      
+      - name: Build
+        run: npm run build
+      
+      - name: Iniciar servidor Next.js
+        run: npm start &
+        env:
+          CI: true
+      
+      - name: Aguardar servidor estar pronto
+        run: |
+          echo "Aguardando servidor iniciar..."
+          npx wait-on http://localhost:3000 --timeout 60000
+      
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            http://localhost:3000
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          runs: 3
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.GITHUB_TOKEN }}
