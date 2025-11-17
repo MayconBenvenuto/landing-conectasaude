@@ -99,9 +99,6 @@ function InstagramEmbed({ url, index }: { url: string; index: number }) {
 export default function BenefitsSection() {
 	return (
 		<section id="beneficios" className="scroll-mt-32 md:scroll-mt-40 w-full px-4 sm:px-8 xl:px-16">
-			{/* Preconnect para acelerar handshake do embed */}
-			<link rel="preconnect" href="https://www.instagram.com" />
-			<link rel="dns-prefetch" href="https://www.instagram.com" />
 			<div className="py-12 md:py-20">
 				{/* Cabeçalho limitado para melhor legibilidade */}
 				<div className="mx-auto max-w-2xl text-center space-y-6">
@@ -125,7 +122,6 @@ export default function BenefitsSection() {
 							src={LogoAvatar}
 							width={48}
 							height={48}
-							priority
 							alt="Logo institucional"
 						/>
 					</div>
@@ -133,7 +129,7 @@ export default function BenefitsSection() {
 						className="my-0"
 						textClassName="text-pretty text-2xl font-bold text-gray-900 dark:text-gray-100"
 					>
-						Resultados reais, histórias que inspiram
+						Resultsados reais, histórias que inspiram
 					</SectionTitle>
 					<p className="text-balance text-sm text-gray-600 dark:text-gray-400 max-w-prose mx-auto">
 						Veja alguns depoimentos em vídeo publicados no Instagram destacando impacto em engajamento, saúde

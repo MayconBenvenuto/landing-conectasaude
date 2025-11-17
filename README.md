@@ -77,6 +77,23 @@ EMAIL_FROM=noreply@belzconectasaude.com.br
 EMAIL_TO=leads@belzconectasaude.com.br
 ```
 
+## 🤖 Workflows Automáticos
+
+### Auto PR para Main
+Após deploy bem-sucedido em `dev`, um Pull Request é criado automaticamente para `main` com:
+- ✅ Checklist de validação
+- 📊 Informações do deploy
+- 🏷️ Labels automáticas
+
+### Quality Checks
+Cada PR para `main` executa automaticamente:
+- Type checking (TypeScript)
+- Linting (ESLint)
+- Build validation
+- Lighthouse CI (Performance, Accessibility, SEO)
+
+**Documentação completa**: [`.github/WORKFLOWS.md`](.github/WORKFLOWS.md)
+
 ## 📡 API de Lead
 
 Endpoint: `POST /api/lead`

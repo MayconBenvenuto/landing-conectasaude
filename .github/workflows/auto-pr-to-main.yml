@@ -1,0 +1,110 @@
+name: Auto PR para Main após Deploy Dev
+
+on:
+  deployment_status:
+
+jobs:
+  create-pr:
+    # Executa apenas quando deploy em dev for bem-sucedido
+    if: |
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.environment == 'Preview – dev'
+    
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+          fetch-depth: 0
+      
+      - name: Verificar se PR já existe
+        id: check-pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Busca PR aberto de dev para main
+          PR_EXISTS=$(gh pr list --base main --head dev --state open --json number --jq '.[0].number')
+          
+          if [ -n "$PR_EXISTS" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "pr_number=$PR_EXISTS" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Criar Pull Request
+        if: steps.check-pr.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Obtém último commit da branch dev
+          LAST_COMMIT=$(git log -1 --pretty=format:"%s")
+          COMMIT_AUTHOR=$(git log -1 --pretty=format:"%an")
+          
+          # Cria corpo do PR com informações úteis
+          PR_BODY=$(cat <<EOF
+          ## 🚀 Deploy em Dev bem-sucedido!
+          
+          Este PR foi criado automaticamente após o deploy bem-sucedido da branch \`dev\`.
+          
+          ### 📋 Informações do Deploy
+          - **Último commit**: ${LAST_COMMIT}
+          - **Autor**: ${COMMIT_AUTHOR}
+          - **Deploy URL**: ${{ github.event.deployment_status.target_url }}
+          - **Ambiente**: ${{ github.event.deployment.environment }}
+          
+          ### ✅ Checklist de Review
+          - [ ] Build passou sem erros
+          - [ ] Deploy preview testado e validado
+          - [ ] Core Web Vitals dentro do esperado
+          - [ ] Formulário de leads funcionando
+          - [ ] Analytics configurado corretamente
+          - [ ] Sem regressões visuais
+          
+          ### 📊 Próximos Passos
+          1. Revisar mudanças abaixo
+          2. Testar deploy preview
+          3. Aprovar e fazer merge para main
+          4. Acompanhar deploy em produção
+          
+          ---
+          
+          **Deploy automatizado pela Vercel** ✨
+          EOF
+          )
+          
+          # Cria o PR
+          gh pr create \
+            --base main \
+            --head dev \
+            --title "🚀 Deploy: Merge dev → main" \
+            --body "$PR_BODY" \
+            --label "auto-deploy,ready-for-review"
+      
+      - name: Comentar em PR existente
+        if: steps.check-pr.outputs.exists == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr comment ${{ steps.check-pr.outputs.pr_number }} --body "✅ **Novo deploy bem-sucedido em dev!**
+          
+          - **Deploy URL**: ${{ github.event.deployment_status.target_url }}
+          - **Status**: Success
+          - **Timestamp**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          
+          PR pronto para review e merge! 🎉"
+      
+      - name: Notificar Slack (opcional)
+        if: steps.check-pr.outputs.exists == 'false'
+        # Descomente e configure se quiser notificações no Slack
+        # env:
+        #   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        run: |
+          echo "✅ PR criado com sucesso!"
+          echo "Descomente a seção acima para ativar notificações Slack"
