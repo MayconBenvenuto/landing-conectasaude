@@ -3,6 +3,8 @@ import "./css/style.css";
 import { Inter } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import LoadingSplash from '@/components/ui/loading-splash';
+import { Analytics } from '@vercel/analytics/react';
+import { OrganizationSchema } from '@/components/schema-org';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -59,12 +61,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
-      <head />
+      <head>
+        <OrganizationSchema />
+      </head>
       <body className={`${inter.variable} bg-gray-50 font-inter tracking-tight text-gray-900 antialiased`}>
         <LoadingSplash />
         <div className="flex min-h-screen flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
           {children}
         </div>
+        <Analytics />
       </body>
     </html>
   );

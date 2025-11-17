@@ -166,6 +166,13 @@ export default function HeroSection() {
 									muted={muted}
 									aria-label="Vídeo de apresentação Belz Conecta Saúde"
 								>
+									<track
+										kind="captions"
+										src="/video/apresentacao-belzseguros.vtt"
+										srcLang="pt-BR"
+										label="Português"
+										default
+									/>
 									Seu navegador não suporta a reprodução de vídeo.
 								</video>
 								{playing && (

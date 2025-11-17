@@ -14,10 +14,11 @@ Thumbs.db
 .git/
 .gitignore
 
-# Documentação e changelog (não necessários em runtime)
-README.md
+# Documentação (não necessários em runtime)
 CHANGELOG.md
-*.md
+TESTING.md
+IMPROVEMENTS.md
+DEPLOY.md
 
 # Dados internos (não devem ir para produção)
 dados/

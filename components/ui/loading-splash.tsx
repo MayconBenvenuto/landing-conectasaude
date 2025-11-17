@@ -38,7 +38,7 @@ export default function LoadingSplash() {
       isLoadingComplete = true;
       loadingCompleteCallbacks.forEach(callback => callback());
       loadingCompleteCallbacks = [];
-    }, 1900); // tempo curto para não atrasar TTI
+    }, 1000); // otimizado para FCP mais rápido
     return () => clearTimeout(timeout);
   }, []);
 
@@ -52,10 +52,10 @@ export default function LoadingSplash() {
         {mounted ? (
           <motion.div
             animate={{
-              scale: [1, 1.2, 1],
+              scale: [1, 1.15, 1],
             }}
             transition={{
-              duration: 1.7,
+              duration: 0.9,
               repeat: Infinity,
               ease: "easeInOut"
             }}
