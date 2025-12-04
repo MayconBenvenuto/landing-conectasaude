@@ -2,6 +2,8 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
   "headers": [
     {
       "source": "/(.*)",

@@ -91,7 +91,7 @@ export default function LeadFormSection() {
 								<li>
 									<a
 										className="group flex gap-4 rounded-xl border border-green-200 bg-white/70 p-4 pr-6 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
-										href="https://wa.me/5581991554660?text=Ol%C3%A1!%20Tenho%20interesse%20em%20conhecer%20o%20programa%20Belz%20Conecta%20Sa%C3%BAde.%20Poderia%20me%20enviar%20a%20apresenta%C3%A7%C3%A3o%3F"
+										href="https://wa.me/5581988242023?text=Ol%C3%A1!%20Tenho%20interesse%20em%20conhecer%20o%20programa%20Belz%20Conecta%20Sa%C3%BAde.%20Poderia%20me%20enviar%20a%20apresenta%C3%A7%C3%A3o%3F"
 										target="_blank"
 										rel="noopener noreferrer"
 										aria-label="Iniciar conversa no WhatsApp com mensagem pré-preenchida"
@@ -101,7 +101,7 @@ export default function LeadFormSection() {
 										</span>
 										<div className="text-left">
 											<p className="text-xs uppercase tracking-wide text-gray-500 font-medium">WhatsApp</p>
-											<p className="text-base font-semibold text-brand-dark">+55 81 99155-4660 <span className="ml-2 inline-block rounded bg-green-100 px-2 py-0.5 align-middle text-[10px] font-medium text-green-700">rápido</span></p>
+											<p className="text-base font-semibold text-brand-dark">+55 81 8824-2023 <span className="ml-2 inline-block rounded bg-green-100 px-2 py-0.5 align-middle text-[10px] font-medium text-green-700">rápido</span></p>
 											<p className="mt-1 text-xs text-gray-500">Resposta rápida em horário comercial.</p>
 										</div>
 									</a>
