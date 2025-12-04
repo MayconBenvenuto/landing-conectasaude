@@ -41,19 +41,19 @@ Este projeto utiliza automação via GitHub Actions para garantir qualidade e ag
 
 #### Type Check
 ```bash
-npm run type-check
+pnpm run type-check
 ```
 Valida tipagem TypeScript em todo o projeto.
 
 #### Lint
 ```bash
-npm run lint
+pnpm run lint
 ```
 Verifica padrões de código com ESLint.
 
 #### Build
 ```bash
-npm run build
+pnpm run build
 ```
 Garante que o projeto compila sem erros.
 
