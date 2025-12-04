@@ -101,7 +101,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
             <div className="pt-4 space-y-3">
               <div>
                 <a
-                  href="https://wa.me/5581991554660?text=Ol%C3%A1!%20Tenho%20interesse%20em%20conhecer%20o%20programa%20Belz%20Conecta%20Sa%C3%BAde.%20Poderia%20me%20enviar%20mais%20informa%C3%A7%C3%B5es%3F"
+                  href="https://wa.me/5581988242023?text=Ol%C3%A1!%20Tenho%20interesse%20em%20conhecer%20o%20programa%20Belz%20Conecta%20Sa%C3%BAde.%20Poderia%20me%20enviar%20mais%20informa%C3%A7%C3%B5es%3F"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 rounded-md bg-green-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm outline-none transition focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2 hover:bg-green-700 active:scale-[0.98]"
